@@ -1,3 +1,7 @@
+# React Materials Cloud Band Structure Visualizer
+
+A React component to visualize band structures on the Materials Cloud platform.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
