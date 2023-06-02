@@ -4,7 +4,7 @@ import "./bands.css";
 
 import { bandPlot } from "./jqueryBands/bands";
 
-function BandsComponent(props) {
+function BandsVisualizer(props) {
   var uuidCanvas = Math.random().toString(16).slice(2);
   var uuidTextbox = Math.random().toString(16).slice(2);
   var theBandPlot = null;
@@ -100,11 +100,15 @@ function BandsComponent(props) {
           <input
             type="radio"
             id={`${uuidCanvas}bt-dragZoom`}
-            name="x"
+            name={`${uuidCanvas}-radio`}
             defaultChecked
           />
           <label htmlFor={`${uuidCanvas}bt-dragZoom`}>Drag/pinch to zoom</label>
-          <input type="radio" id={`${uuidCanvas}bt-dragPan`} name="x" />
+          <input
+            type="radio"
+            id={`${uuidCanvas}bt-dragPan`}
+            name={`${uuidCanvas}-radio`}
+          />
           <label htmlFor={`${uuidCanvas}bt-dragPan`}>Drag to pan</label>
         </div>
         {jsxTogglePdosButton}
@@ -127,4 +131,4 @@ function BandsComponent(props) {
   );
 }
 
-export default BandsComponent;
+export default BandsVisualizer;

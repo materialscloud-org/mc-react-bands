@@ -9,7 +9,8 @@
   width: 100%;
   /* padding: 100px; */
   display: flex;
-  justify-items: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .bands-plot {

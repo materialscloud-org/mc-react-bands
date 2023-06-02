@@ -534,117 +534,115 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
       },
     };
   } else {
-    // var annotations = {
-    //   type: "line",
-    //   id: "fermiLine",
-    //   scaleID: "dosA",
-    //   mode: "vertical",
-    //   value: 0,
-    //   borderColor: "red",
-    //   borderWidth: 2,
-    //   label: {
-    //     enabled: true,
-    //     position: "top",
-    //     content: "Fermi",
-    //     yAdjust: 4,
-    //   },
-    // };
-    // if (this.showFermi === false) annotations = {};
-    // dosOptions = {
-    //   type: "scatter",
-    //   data: {
-    //     datasets: this.dosSeries,
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     maintainAspectRatio: false,
-    //     animation: {
-    //       duration: 0,
-    //     },
-    //     hover: {
-    //       animationDuration: 0, // duration of animations when hovering an item
-    //       mode: null, // disable any hovering effects
-    //     },
-    //     legend: {
-    //       display: true,
-    //       position: "right",
-    //       labels: {
-    //         filter: function (item, chart) {
-    //           // remove the label for the dumb dataset of the y axis
-    //           return !item.text.includes("y axis");
-    //         },
-    //       },
-    //     },
-    //     scales: {
-    //       y: [
-    //         {
-    //           gridLines: {
-    //             display: true,
-    //             drawBorder: true,
-    //             drawOnChartArea: false,
-    //             zeroLineWidth: 2,
-    //             tickMarkLength: 0,
-    //           },
-    //           min: bandPlotObject.dosRange[0],
-    //           max: bandPlotObject.dosRange[1],
-    //           ticks: {
-    //             padding: 10,
-    //           },
-    //           title: {
-    //             display: true,
-    //             text: "Density of States",
-    //           },
-    //         },
-    //       ],
-    //       x: [
-    //         {
-    //           id: "dosA",
-    //           display: true,
-    //           position: "right",
-    //           gridLines: {
-    //             display: true,
-    //             drawBorder: true,
-    //             drawOnChartArea: false,
-    //           },
-    //           title: {
-    //             display: true,
-    //             text: "E-Ef (eV)",
-    //           },
-    //           min: bandPlotObject.yLimit.ymin,
-    //           max: bandPlotObject.yLimit.ymax,
-    //           ticks: {
-    //             // change the label of the ticks
-    //             callback: function (value, index, values) {
-    //               if (index !== 0 && index != values.length - 1) {
-    //                 return value;
-    //               }
-    //             },
-    //           },
-    //         },
-    //       ],
-    //     },
-    //     annotation: {
-    //       annotations: [annotations],
-    //     },
-    //     elements: {
-    //       point: { radius: 0 },
-    //     },
-    //     zoom: {
-    //       enabled: false, // disable zoom initially, as otherwise panning will be bugged
-    //       mode: "x",
-    //       drag: true,
-    //       onZoomComplete: function (chart) {
-    //         if (bandPlotObject.myChart !== undefined) {
-    //           bandPlotObject.myChart.options.scales.y.min =
-    //             bandPlotObject.myDos.options.scales.y.min;
-    //           bandPlotObject.myChart.options.scales.y.max =
-    //             bandPlotObject.myDos.options.scales.y.max;
-    //           bandPlotObject.myChart.update();
-    //         }
-    //       },
-    //     },
-    //   },
-    // };
+    if (this.showFermi) {
+      dosAnnotations["fermiLine"] = {
+        type: "line",
+        scaleID: "x",
+        mode: "vertical",
+        value: 0,
+        borderColor: "red",
+        borderWidth: 1,
+        label: {
+          display: true,
+          position: "start",
+          content: "Fermi",
+        },
+      };
+    }
+
+    dosOptions = {
+      type: "scatter",
+      data: {
+        datasets: this.dosSeries,
+      },
+      options: {
+        animation: false,
+        plugins: {
+          legend: {
+            // display: false,
+            display: this.showLegend,
+            position: "right",
+            labels: {
+              filter: function (item, chart) {
+                // remove the label for the dumb dataset of the y axis
+                return !item.text.includes("y axis");
+              },
+            },
+          },
+          annotation: {
+            annotations: dosAnnotations,
+          },
+          zoom: {
+            zoom: {
+              drag: {
+                enabled: true,
+              },
+              mode: "x",
+            },
+            pan: {
+              // Panning only seems to work if i set it to true initially and disable after creating the chart
+              enabled: true,
+              mode: "x",
+            },
+          },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 0,
+        },
+        hover: {
+          animationDuration: 0, // duration of animations when hovering an item
+          mode: null, // disable any hovering effects
+        },
+        scales: {
+          y: {
+            grid: {
+              display: true,
+              // drawBorder: true,
+              // drawOnChartArea: false,
+              // zeroLineWidth: 2,
+              // tickMarkLength: 0,
+            },
+            min: bandPlotObject.dosRange[0],
+            max: bandPlotObject.dosRange[1],
+            // ticks: {
+            //   padding: 10,
+            // },
+            title: {
+              display: true,
+              text: "Density of States",
+            },
+          },
+          x: {
+            display: true,
+            position: "right",
+            grid: {
+              display: true,
+              // drawBorder: true,
+              // drawOnChartArea: false,
+            },
+            title: {
+              display: true,
+              text: "E-Ef (eV)",
+            },
+            min: bandPlotObject.yLimit.ymin,
+            max: bandPlotObject.yLimit.ymax,
+            ticks: {
+              // change the label of the ticks
+              callback: function (value, index, values) {
+                if (index !== 0 && index != values.length - 1) {
+                  return value;
+                }
+              },
+            },
+          },
+        },
+        elements: {
+          point: { radius: 0 },
+        },
+      },
+    };
   }
 
   console.log("dosOptions", dosOptions);

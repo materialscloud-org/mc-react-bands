@@ -7,14 +7,14 @@ import Si_dos from "./data/Si_dos.json";
 import Fe_spin_bands_fast from "./data/Fe_spin_bands_fast.json";
 import Fe_spin_dos_fast from "./data/Fe_spin_dos_fast.json";
 
-import BandsComponent from "./BandsComponent";
+import BandsVisualizer from "./BandsVisualizer";
 
 function App() {
   // Make multiple bandplots
   var jsx1 = (
     <div>
       <h3>Bands and DOS (spin-polarized)</h3>
-      <BandsComponent
+      <BandsVisualizer
         bandsDataList={[Fe_spin_bands_fast]}
         dosData={Fe_spin_dos_fast}
         showFermi={true}
@@ -29,7 +29,7 @@ function App() {
   var jsx2 = (
     <div>
       <h3>Just bands</h3>
-      <BandsComponent
+      <BandsVisualizer
         bandsDataList={[Si_bands]}
         dosData={null}
         showFermi={true}
@@ -44,13 +44,13 @@ function App() {
   var jsx3 = (
     <div>
       <h3>Just DOS</h3>
-      <BandsComponent
+      <BandsVisualizer
         bandsDataList={[]}
         dosData={Si_dos}
         showFermi={true}
         showLegend={undefined}
         yLimit={{ ymin: -10.0, ymax: 10.0 }}
-        dosRange={[-2.0, 2.0]}
+        dosRange={[0.0, 2.5]}
         colorInfo={undefined}
       />
     </div>
