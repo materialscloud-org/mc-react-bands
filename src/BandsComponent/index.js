@@ -2,45 +2,29 @@ import React, { useEffect, useRef } from "react";
 
 import "./bands.css";
 
-import { bandPlot } from "./bands";
+import { bandPlot } from "./jqueryBands/bands";
 
-import Co_bands from "../data/Co_bands.json";
-import Co_bands_fast from "../data/Co_bands_fast.json";
-import Si_bands from "../data/Si_bands.json";
-import Si_dos from "../data/Si_dos.json";
-import Fe_spin_bands_fast from "../data/Fe_spin_bands_fast.json";
-import Fe_spin_dos_fast from "../data/Fe_spin_dos_fast.json";
-
-function BandsComponent() {
+function BandsComponent(props) {
   var uuidCanvas = Math.random().toString(16).slice(2);
   var uuidTextbox = Math.random().toString(16).slice(2);
   var theBandPlot = null;
 
-  // inputs
-  var bandsDataList = [Fe_spin_bands_fast];
-  var dosData = Fe_spin_dos_fast;
-  var showFermi = true;
-  var showLegend = undefined;
-  var yLimit = { ymin: -10.0, ymax: 10.0 };
-  var dosRange = [-2.0, 2.0];
-  var colorInfo = undefined;
-
   // basic checks
-  var isBands = bandsDataList.length > 0;
-  var isDos = dosData != undefined || dosData != null;
+  var isBands = props.bandsDataList.length > 0;
+  var isDos = props.dosData != undefined || props.dosData != null;
   var areBoth = isBands && isDos;
 
   useEffect(() => {
     theBandPlot = bandPlot(
       uuidCanvas,
       uuidTextbox,
-      bandsDataList,
-      dosData,
-      showFermi,
-      showLegend,
-      yLimit,
-      dosRange,
-      colorInfo
+      props.bandsDataList,
+      props.dosData,
+      props.showFermi,
+      props.showLegend,
+      props.yLimit,
+      props.dosRange,
+      props.colorInfo
     );
     return () => {
       if (isBands) theBandPlot.myChart.destroy();
