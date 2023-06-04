@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-import Chart from "chart.js/auto";
+import { Chart } from "chart.js";
 import zoomPlugin from "chartjs-plugin-zoom";
 import annotationPlugin from "chartjs-plugin-annotation";
 
