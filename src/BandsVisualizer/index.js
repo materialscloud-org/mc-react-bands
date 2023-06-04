@@ -1,8 +1,15 @@
 import React, { useEffect, useRef } from "react";
 
+import Chart from "chart.js/auto";
+import zoomPlugin from "chartjs-plugin-zoom";
+import annotationPlugin from "chartjs-plugin-annotation";
+
 import "./bands.css";
 
 import { bandPlot } from "./jqueryBands/bands";
+
+Chart.register(zoomPlugin);
+Chart.register(annotationPlugin);
 
 function BandsVisualizer(props) {
   var uuidCanvas = Math.random().toString(16).slice(2);

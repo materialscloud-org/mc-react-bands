@@ -4,15 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import Chart from "chart.js/auto";
-import { Filler } from "chart.js";
-import zoomPlugin from "chartjs-plugin-zoom";
-import annotationPlugin from "chartjs-plugin-annotation";
-
-Chart.register(Filler);
-Chart.register(zoomPlugin);
-Chart.register(annotationPlugin);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
