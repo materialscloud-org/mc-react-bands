@@ -9,6 +9,13 @@ import Fe_spin_dos_fast from "./data/Fe_spin_dos_fast.json";
 
 import BandsVisualizer from "./BandsVisualizer";
 
+import Chart from "chart.js/auto";
+import zoomPlugin from "chartjs-plugin-zoom";
+import annotationPlugin from "chartjs-plugin-annotation";
+
+Chart.register(zoomPlugin);
+Chart.register(annotationPlugin);
+
 function App() {
   // Make multiple bandplots
   var jsx1 = (

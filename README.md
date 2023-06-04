@@ -1,6 +1,35 @@
 # React Materials Cloud Band Structure Visualizer
 
-A React component to visualize band structures on the Materials Cloud platform.
+A React component to visualize band structures and density of states (dos) on the Materials Cloud platform.
+
+The `BandsVisualizer` component (only the folder `src/BandsVisualizer`) is published as a npm package, which can be installed via `npm install mc-react-bands`. Then the component can be imported via
+
+```
+import BandsVisualizer from "???/BandsVisualizer";
+```
+
+This repository also contains example usage in the `src/App.js` file. `src/data` contains the data format of the band and dos files.
+
+For local development, just install and run this repository:
+
+```
+npm install
+npm start
+```
+
+To publish a new version on npm:
+
+```
+npm run build
+npm publish
+```
+
+The core of this app is based on `jquery` and `chart.js`.
+
+Related repositories:
+
+- https://github.com/materialscloud-org/bands-widget (original, outdated version used in legacy Materials Cloud)
+- https://github.com/aiidalab/widget-bandsplot (corresponding AiiDAlab widget, that should be adapted to use this repository)
 
 # Getting Started with Create React App
 
