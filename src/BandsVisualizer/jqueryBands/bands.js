@@ -7,8 +7,8 @@ import {
 
 import tinycolor from "tinycolor2";
 
-import "chartjs-plugin-zoom";
-import "chartjs-plugin-annotation";
+// import "chartjs-plugin-zoom";
+// import "chartjs-plugin-annotation";
 import $ from "jquery";
 
 var plots = {};
