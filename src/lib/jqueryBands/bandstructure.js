@@ -37,6 +37,7 @@
 // Utility 'zip' function analogous to python's, from
 // https://stackoverflow.com/questions/4856717
 
+//import Chart from "chart.js/auto";
 import { Chart } from "chart.js";
 
 // import "chartjs-plugin-zoom";

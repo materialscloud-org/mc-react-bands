@@ -1,60 +1,41 @@
 {
   "name": "mc-react-bands",
-  "version": "0.2.3",
+  "version": "0.3.6",
   "author": "Kristjan Eimre <kristjan.eimre@epfl.ch>",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "babel": {
-    "presets": [
-      "@babel/preset-react",
-      "@babel/preset-env"
-    ]
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "dist/mc-react-bands.umd.js",
+  "module": "dist/mc-react-bands.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mc-react-bands.es.js",
+      "require": "./dist/mc-react-bands.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "jquery": "3.5.1",
+    "tinycolor2": "1.4.2"
+  },
+  "peerDependencies": {
     "chart.js": "^4.3.0",
     "chartjs-plugin-annotation": "^3.0.1",
     "chartjs-plugin-zoom": "^2.0.1",
-    "jquery": "3.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "tinycolor2": "1.4.2",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "prebuild": "rimraf dist",
-    "build": "SET NODE_ENV=production && npx babel src/BandsVisualizer --out-dir dist --copy-files",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.22.1",
-    "@babel/preset-env": "^7.22.4",
-    "@babel/preset-react": "^7.22.3",
-    "babel-loader": "^9.1.2",
-    "rimraf": "^5.0.1"
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.0.0",
+    "vite": "^4.3.9",
+    "vite-plugin-libcss": "^1.1.1"
   }
 }

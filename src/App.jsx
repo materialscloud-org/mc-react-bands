@@ -7,7 +7,7 @@ import Si_dos from "./data/Si_dos.json";
 import Fe_spin_bands_fast from "./data/Fe_spin_bands_fast.json";
 import Fe_spin_dos_fast from "./data/Fe_spin_dos_fast.json";
 
-import BandsVisualizer from "./BandsVisualizer";
+import BandsVisualizer from "./lib";
 
 import Chart from "chart.js/auto";
 import zoomPlugin from "chartjs-plugin-zoom";
