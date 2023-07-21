@@ -411,7 +411,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
         },
       };
     }
-
+    // vertical orientation (DOS next to bands)
     dosOptions = {
       type: "scatter",
       data: {
@@ -421,7 +421,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
         animation: false,
         plugins: {
           legend: {
-            // display: false,
+            maxWidth: ({ chart }) => chart.width * 0.5,
             display: this.showLegend,
             position: "right",
             labels: {
@@ -551,6 +551,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
       };
     }
 
+    // horizontal orientation (DOS standalone)
     dosOptions = {
       type: "scatter",
       data: {
@@ -560,7 +561,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
         animation: false,
         plugins: {
           legend: {
-            // display: false,
+            maxWidth: ({ chart }) => chart.width * 0.5,
             display: this.showLegend,
             position: "right",
             labels: {
