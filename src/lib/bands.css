@@ -22,7 +22,7 @@
 }
 
 .bands-plot-single {
-  width: 70%;
+  width: 95%;
   height: 450px;
 }
 
@@ -40,6 +40,7 @@
 
 .bands-path-input {
   align-self: stretch;
+  margin-bottom: 2px;
 }
 
 .span-label {
@@ -60,10 +61,12 @@
   border: 1px solid #3560a0;
   background-color: #3560a0;
   color: white;
-  margin: 5px;
-  height: 30px;
+  margin: 3px 4px;
+  height: 25px;
   font-size: medium;
   cursor: pointer;
+  height: 25px;
+  padding: 0px 4px;
 }
 
 .button-white {
@@ -71,25 +74,35 @@
   border: 1px solid #3560a0;
   background: white;
   color: #3560a0;
-  margin: 5px;
-  height: 30px;
+  margin: 3px 4px;
+  height: 25px;
   font-size: medium;
   cursor: pointer;
+  padding: 0px 4px;
 }
 
 .button:hover {
   filter: brightness(90%);
 }
 
-.drag-radio-buttons {
+.drag-button-container {
   width: fit-content;
-  margin: 5px;
-  height: 30px;
-  /* padding: 6px 8px; */
   font-size: medium;
-  border: 1px solid #3560a0;
-  border-radius: 4px;
+  margin: 3px 4px;
+  height: 25px;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  align-items: center;
+  border: 1px solid rgb(88, 88, 88);
+  border-radius: 4px;
+}
+
+.drag-radio-buttons {
+  /* padding: 6px 8px; */
+  /* border: 1px solid #3560a0;
+  border-radius: 4px; */
   display: flex;
   flex-direction: row;
   flex-wrap: no-wrap;
@@ -104,12 +117,13 @@
 .drag-radio-buttons label {
   font-family: sans-serif;
   /* padding: 10px 10px; */
-  padding: 6px 8px;
-  /* height: 20px; */
+  /* padding: 6px 8px; */
+  /* height: 25px; */
   border-right: 1px solid #ccc;
   cursor: pointer;
   transition: all 0.3s;
-  background: white;
+  background: #ffffff;
+  padding: 10px 4px;
 }
 
 .drag-radio-buttons label:last-of-type {

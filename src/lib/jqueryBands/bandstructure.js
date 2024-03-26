@@ -172,7 +172,7 @@ BandPlot.prototype.addBandStructure = function (bandsData, colorInfo) {
   //  - 'Down' color of spin down bands
 
   var defaultColors = [
-    "#555555",
+    "#333333",
     "#e41a1c",
     "#377eb8",
     "#4daf4a",
@@ -200,13 +200,13 @@ BandPlot.prototype.addDos = function (dosData) {
 
   var Index = dosData["dos"].length;
   var defaultColors = [
-    "#555555",
+    "#333333",
     "#e41a1c",
     "#377eb8",
     "#4daf4a",
     "#984ea3",
     "#ff7f00",
-    "#ffff33",
+    "#eeee05",
     "#a65628",
     "#f781bf",
     "#999999",
@@ -421,7 +421,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
         animation: false,
         plugins: {
           legend: {
-            maxWidth: ({ chart }) => chart.width * 0.5,
+            maxWidth: ({ chart }) => chart.width * 0.6,
             display: this.showLegend,
             position: "right",
             labels: {
@@ -561,7 +561,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
         animation: false,
         plugins: {
           legend: {
-            maxWidth: ({ chart }) => chart.width * 0.5,
+            maxWidth: ({ chart }) => chart.width * 0.6,
             display: this.showLegend,
             position: "right",
             labels: {

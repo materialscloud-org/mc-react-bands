@@ -29,7 +29,7 @@ function App() {
       showFermi={true}
       showLegend={undefined}
       yLimit={{ ymin: -10.0, ymax: 10.0 }}
-      dosRange={[-2.0, 2.0]}
+      dosRange={[]}
       colorInfo={undefined}
     />
   );

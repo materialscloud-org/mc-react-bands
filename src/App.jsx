@@ -19,47 +19,66 @@ Chart.register(annotationPlugin);
 function App() {
   // Make multiple bandplots
   var jsx1 = (
-    <div>
+    <div className="center-div">
       <h3>Bands and DOS (spin-polarized)</h3>
-      <BandsVisualizer
-        bandsDataList={[Fe_spin_bands_fast]}
-        dosData={Fe_spin_dos_fast}
-        showFermi={true}
-        showLegend={undefined}
-        yLimit={{ ymin: -10.0, ymax: 10.0 }}
-        dosRange={[-2.0, 2.0]}
-        colorInfo={undefined}
-      />
+      <div
+        style={{
+          width: "700px",
+        }}
+      >
+        <span>test</span>
+        <BandsVisualizer
+          bandsDataList={[Fe_spin_bands_fast]}
+          dosData={Fe_spin_dos_fast}
+          showFermi={true}
+          showLegend={undefined}
+          yLimit={{ ymin: -10.0, ymax: 10.0 }}
+          dosRange={[]}
+          colorInfo={undefined}
+        />
+      </div>
     </div>
   );
 
   var jsx2 = (
-    <div>
+    <div className="center-div">
       <h3>Just bands</h3>
-      <BandsVisualizer
-        bandsDataList={[Si_bands]}
-        dosData={null}
-        showFermi={true}
-        showLegend={undefined}
-        yLimit={{ ymin: -10.0, ymax: 10.0 }}
-        dosRange={[-2.0, 2.0]}
-        colorInfo={undefined}
-      />
+      <div
+        style={{
+          width: "500px",
+        }}
+      >
+        <BandsVisualizer
+          bandsDataList={[Si_bands]}
+          dosData={null}
+          showFermi={true}
+          showLegend={undefined}
+          yLimit={{ ymin: -10.0, ymax: 10.0 }}
+          dosRange={[-2.0, 2.0]}
+          colorInfo={undefined}
+        />
+      </div>
     </div>
   );
 
   var jsx3 = (
-    <div>
+    <div className="center-div">
       <h3>Just DOS</h3>
-      <BandsVisualizer
-        bandsDataList={[]}
-        dosData={Si_dos}
-        showFermi={true}
-        showLegend={undefined}
-        yLimit={{ ymin: -10.0, ymax: 10.0 }}
-        dosRange={[0.0, 2.5]}
-        colorInfo={undefined}
-      />
+      <div
+        style={{
+          width: "600px",
+        }}
+      >
+        <BandsVisualizer
+          bandsDataList={[]}
+          dosData={Si_dos}
+          showFermi={true}
+          showLegend={undefined}
+          yLimit={{ ymin: -10.0, ymax: 10.0 }}
+          dosRange={[]}
+          colorInfo={undefined}
+        />
+      </div>
     </div>
   );
 

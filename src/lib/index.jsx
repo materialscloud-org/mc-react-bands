@@ -55,7 +55,7 @@ function BandsVisualizer(props) {
     );
     jsxBandsPathResetButton = (
       <button type="button" id={`${uuidCanvas}bt-reset`} className="button">
-        Reset default path
+        Reset path
       </button>
     );
   }
@@ -96,20 +96,22 @@ function BandsVisualizer(props) {
         >
           Reset zoom
         </button>
-        <div className="drag-radio-buttons">
-          <input
-            type="radio"
-            id={`${uuidCanvas}bt-dragZoom`}
-            name={`${uuidCanvas}-radio`}
-            defaultChecked
-          />
-          <label htmlFor={`${uuidCanvas}bt-dragZoom`}>Drag/pinch to zoom</label>
-          <input
-            type="radio"
-            id={`${uuidCanvas}bt-dragPan`}
-            name={`${uuidCanvas}-radio`}
-          />
-          <label htmlFor={`${uuidCanvas}bt-dragPan`}>Drag to pan</label>
+        <div className="drag-button-container">
+          <div className="drag-radio-buttons">
+            <input
+              type="radio"
+              id={`${uuidCanvas}bt-dragZoom`}
+              name={`${uuidCanvas}-radio`}
+              defaultChecked
+            />
+            <label htmlFor={`${uuidCanvas}bt-dragZoom`}>Drag to zoom</label>
+            <input
+              type="radio"
+              id={`${uuidCanvas}bt-dragPan`}
+              name={`${uuidCanvas}-radio`}
+            />
+            <label htmlFor={`${uuidCanvas}bt-dragPan`}>Drag to pan</label>
+          </div>
         </div>
         {jsxTogglePdosButton}
         <button
@@ -117,14 +119,14 @@ function BandsVisualizer(props) {
           id={`${uuidCanvas}bt-downloadFigure`}
           className="button"
         >
-          Download Figure
+          Download image
         </button>
         <button
           type="button"
           id={`${uuidCanvas}bt-downloadJson`}
           className="button"
         >
-          Download Json
+          Download json
         </button>
       </div>
     </div>
