@@ -296,7 +296,6 @@ function bandPlot(
       theBandPlot.resDosZoom("vertical");
     if (!$.isEmptyObject(dosFile) && !dataFilePaths.length)
       theBandPlot.resDosZoom("horizontal");
-    console.log(theBandPlot);
   };
 
   var theDragPanButton = document.getElementById(bandDivId + "bt-dragPan");

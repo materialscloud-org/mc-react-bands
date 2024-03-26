@@ -240,10 +240,6 @@ BandPlot.prototype.initChart = function (ticksData) {
     };
   }
 
-  console.log("ticksData", ticksData);
-
-  console.log("bandPlotObject", bandPlotObject);
-
   var chartOptions = {
     type: "scatter",
     data: {
@@ -648,8 +644,6 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
     };
   }
 
-  console.log("dosOptions", dosOptions);
-
   var ctd = document.getElementById(this.divID + "-dos").getContext("2d");
   bandPlotObject.myDos = new Chart(ctd, dosOptions);
   // disable panning initially
@@ -891,14 +885,10 @@ BandPlot.prototype.updateBandPlot = function (bandPath, forceRedraw) {
   // Change labels with correct Greek fonts
   var highSymmetryUpdatedTicks = bandPlotObject.updateTicks(highSymmetryTicks);
 
-  console.log("HIGH-SYM-ticks", highSymmetryTicks);
-
   // map ticks into a list of dictionaries, for ease of use later
   var ticksData = highSymmetryUpdatedTicks.map(function (data, idx) {
     return { value: data[0], label: data[1] };
   });
-
-  console.log("ticksData", ticksData);
 
   bandPlotObject.xLimit = { xmin: 0, xmax: currentXOffset };
 
