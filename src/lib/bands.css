@@ -86,8 +86,10 @@
 }
 
 .drag-button-container {
+  box-sizing: border-box;
   width: fit-content;
   font-size: medium;
+  border: 1px solid rgb(88, 88, 88);
   margin: 3px 4px;
   height: 25px;
   overflow: hidden;
@@ -95,7 +97,6 @@
   flex-direction: row;
   flex-wrap: no-wrap;
   align-items: center;
-  border: 1px solid rgb(88, 88, 88);
   border-radius: 4px;
 }
 
