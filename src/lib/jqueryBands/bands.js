@@ -194,6 +194,23 @@ function bandPlot(
       theBandPlot.updateDosPlot("horizontal");
     }
 
+    function setPdosVisibility(hidden) {
+      theBandPlot.dosSeries.forEach((series, i) => {
+        if (series.label.toLowerCase().includes("total")) {
+          return;
+        }
+        if (series.label.toLowerCase().includes("y axis")) {
+          return;
+        }
+        // assume that everything else is PDOS and hide them
+        if (hidden) {
+          theBandPlot.myDos.hide(i);
+        } else {
+          theBandPlot.myDos.show(i);
+        }
+      });
+    }
+
     var theTogglePdosButton = document.getElementById(
       bandDivId + "bt-togglePdos"
     );
@@ -201,23 +218,13 @@ function bandPlot(
       if (theTogglePdosButton.classList.contains("button")) {
         $("#" + bandDivId + "bt-togglePdos").addClass("button-white");
         $("#" + bandDivId + "bt-togglePdos").removeClass("button");
-
-        // The PDOS curves start from index 2.
-        // Index 0 is for the dumb datset of y axis add to workaround the step change issue #49 .
-        // Index 1 is for total DOS (The widget don't know if the first set of data is TDOS or not, this need to be polish in future.)
-        for (var i = 2; i < theBandPlot.dosSeries.length; i++) {
-          theBandPlot.dosSeries[i].hidden = true;
-        }
-        theBandPlot.myDos.update();
+        setPdosVisibility(true);
       } else {
         $("#" + bandDivId + "bt-togglePdos").addClass("button");
         $("#" + bandDivId + "bt-togglePdos").removeClass("button-white");
-
-        for (var i = 2; i < theBandPlot.dosSeries.length; i++) {
-          theBandPlot.dosSeries[i].hidden = false;
-        }
-        theBandPlot.myDos.update();
+        setPdosVisibility(false);
       }
+      theBandPlot.myDos.update();
     };
 
     var theDownloadFigureButton = document.getElementById(

@@ -418,6 +418,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
         datasets: this.dosSeries,
       },
       options: {
+        indexAxis: "y",
         animation: false,
         plugins: {
           legend: {
@@ -958,7 +959,11 @@ BandPlot.prototype.updateDosPlot = function (orientation = "vertical") {
 
   bandPlotObject.dosSeries.push(dumb_dos);
 
-  for (let i = 0; i < bandPlotObject.dosData["dos"].length; i++) {
+  // Add them in reverse order, then the first curve will end up
+  // behind all others on the plot. Usually the first data entry is
+  // total DOS, that will otherwise overlap all the other DOS curves
+  let num_dos = bandPlotObject.dosData["dos"].length;
+  for (let i = num_dos - 1; i >= 0; i--) {
     curve = [];
 
     var dosx = bandPlotObject.dosData["dos"][i]["x"];
@@ -978,6 +983,7 @@ BandPlot.prototype.updateDosPlot = function (orientation = "vertical") {
       hidden: false,
       borderWidth: 1,
       data: curve,
+      type: "line",
       fill: 0,
       showLine: true,
       pointRadius: 0,

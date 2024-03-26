@@ -17,8 +17,28 @@ Chart.register(zoomPlugin);
 Chart.register(annotationPlugin);
 
 function App() {
-  // Make multiple bandplots
   var jsx1 = (
+    <div className="center-div">
+      <h3>Bands and DOS</h3>
+      <div
+        style={{
+          width: "800px",
+        }}
+      >
+        <BandsVisualizer
+          bandsDataList={[Si_bands]}
+          dosData={Si_dos}
+          showFermi={true}
+          showLegend={undefined}
+          yLimit={{ ymin: -10.0, ymax: 10.0 }}
+          dosRange={[]}
+          colorInfo={undefined}
+        />
+      </div>
+    </div>
+  );
+
+  var jsx2 = (
     <div className="center-div">
       <h3>Bands and DOS (spin-polarized)</h3>
       <div
@@ -40,12 +60,12 @@ function App() {
     </div>
   );
 
-  var jsx2 = (
+  var jsx3 = (
     <div className="center-div">
       <h3>Just bands</h3>
       <div
         style={{
-          width: "500px",
+          width: "800px",
         }}
       >
         <BandsVisualizer
@@ -54,14 +74,14 @@ function App() {
           showFermi={true}
           showLegend={undefined}
           yLimit={{ ymin: -10.0, ymax: 10.0 }}
-          dosRange={[-2.0, 2.0]}
+          dosRange={[]}
           colorInfo={undefined}
         />
       </div>
     </div>
   );
 
-  var jsx3 = (
+  var jsx4 = (
     <div className="center-div">
       <h3>Just DOS</h3>
       <div
@@ -87,6 +107,7 @@ function App() {
       {jsx1}
       {jsx2}
       {jsx3}
+      {jsx4}
     </div>
   );
 }
