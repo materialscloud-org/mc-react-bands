@@ -1,5 +1,7 @@
 # React Materials Cloud Band Structure Visualizer
 
+[![NPM Version](https://img.shields.io/npm/v/mc-react-bands)](https://www.npmjs.com/package/mc-react-bands)
+
 A React component to visualize band structures and density of states (dos) on the Materials Cloud platform.
 
 The `BandsVisualizer` component (only the folder `src/lib`) is published as a npm package, which can be installed via `npm install mc-react-bands`.
@@ -39,6 +41,15 @@ export default App;
 
 This repository also contains example usage in the `src/App.jsx` file. `src/data` contains the data format of the band and dos files.
 
+The core of this app is based on `jquery` and `chart.js`.
+
+Related repositories:
+
+- https://github.com/osscar-org/widget-bandsplot (corresponding Jupyter widget)
+- https://github.com/materialscloud-org/bands-widget (original, outdated version used in legacy Materials Cloud)
+
+## Development
+
 For local development, and running the example, just install and run this repository:
 
 ```
@@ -46,16 +57,11 @@ npm install
 npm run dev
 ```
 
-To publish a new version on npm:
+### Publishing a new version
 
+To make a new version and publish to npm via GitHub Actions:
+
+```bash
+npm version <patch/minor/major>
+git push --follow-tags
 ```
-npm run build
-npm publish
-```
-
-The core of this app is based on `jquery` and `chart.js`.
-
-Related repositories:
-
-- https://github.com/materialscloud-org/bands-widget (original, outdated version used in legacy Materials Cloud)
-- https://github.com/aiidalab/widget-bandsplot (corresponding AiiDAlab widget, that should be adapted to use this repository)
