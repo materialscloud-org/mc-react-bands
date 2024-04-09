@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import "./App.css";
 
 import Co_bands from "./data/Co_bands.json";
@@ -17,6 +19,14 @@ Chart.register(zoomPlugin);
 Chart.register(annotationPlugin);
 
 function App() {
+  const [yLimit, setYLimit] = useState({ ymin: -10.0, ymax: 10.0 });
+  const [bandsData, setBandsData] = useState([Si_bands]);
+
+  const updateWidget = () => {
+    //setYLimit({ ymin: 0.0, ymax: 10.0 });
+    setBandsData([Co_bands]);
+  };
+
   var jsx1 = (
     <div className="center-div">
       <h3>Bands and DOS</h3>
@@ -26,11 +36,11 @@ function App() {
         }}
       >
         <BandsVisualizer
-          bandsDataList={[Si_bands]}
+          bandsDataList={bandsData}
           dosData={Si_dos}
           showFermi={true}
           showLegend={undefined}
-          yLimit={{ ymin: -10.0, ymax: 10.0 }}
+          yLimit={yLimit}
           dosRange={[]}
           colorInfo={undefined}
         />
@@ -104,6 +114,7 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={updateWidget}>update</button>
       {jsx1}
       {jsx2}
       {jsx3}

@@ -7,7 +7,7 @@ import { bandPlot } from "./jqueryBands/bands";
 function BandsVisualizer(props) {
   var uuidCanvas = Math.random().toString(16).slice(2);
   var uuidTextbox = Math.random().toString(16).slice(2);
-  var theBandPlot = null;
+  var theBandPlot = useRef(null);
 
   // basic checks
   var isBands = props.bandsDataList.length > 0;
@@ -30,7 +30,7 @@ function BandsVisualizer(props) {
       if (isBands) theBandPlot.myChart.destroy();
       if (isDos) theBandPlot.myDos.destroy();
     };
-  }, []);
+  }, [props]);
 
   var jsxBandsPlot = null;
   var jsxDosPlot = null;
