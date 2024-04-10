@@ -11,7 +11,7 @@ function BandsVisualizer(props) {
 
   // basic checks
   var isBands = !(!props.bandsDataList || props.bandsDataList.length == 0);
-  var isDos = props.dosData != undefined || props.dosData != null;
+  var isDos = !(!props.dosData || Object.keys(props.dosData).length === 0);
   var areBoth = isBands && isDos;
 
   useEffect(() => {
