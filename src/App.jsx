@@ -42,6 +42,7 @@ function App() {
           yLimit={yLimit}
           dosRange={[]}
           colorInfo={undefined}
+          formatSettings={{ bands_ylabel: "Electronic bands (eV)" }}
         />
       </div>
     </div>

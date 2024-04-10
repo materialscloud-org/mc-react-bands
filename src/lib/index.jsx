@@ -24,7 +24,8 @@ function BandsVisualizer(props) {
       props.showLegend,
       props.yLimit,
       props.dosRange,
-      props.colorInfo
+      props.colorInfo,
+      props.formatSettings
     );
     return () => {
       if (isBands) theBandPlot.myChart.destroy();

@@ -129,7 +129,14 @@ function getValidPointNames(allData) {
 }
 
 /////////////// MAIN CLASS DEFINITION /////////////////
-var BandPlot = function (divID, showFermi, showLegend, yLimit, dosRange) {
+var BandPlot = function (
+  divID,
+  showFermi,
+  showLegend,
+  yLimit,
+  dosRange,
+  formatSettings
+) {
   this.divID = divID;
   this.allData = [];
   this.dosData = {};
@@ -147,6 +154,7 @@ var BandPlot = function (divID, showFermi, showLegend, yLimit, dosRange) {
   this.yLimit = yLimit;
   this.dosRange = dosRange;
   this.yLabel = "";
+  this.formatSettings = formatSettings || {};
 
   if (typeof this.myChart != "undefined") {
     this.myChart.destroy();
@@ -623,7 +631,7 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
             },
             title: {
               display: true,
-              text: "E-Ef (eV)",
+              text: "E - Ef (eV)",
             },
             min: bandPlotObject.yLimit.ymin,
             max: bandPlotObject.yLimit.ymax,
@@ -894,7 +902,8 @@ BandPlot.prototype.updateBandPlot = function (bandPath, forceRedraw) {
 
   bandPlotObject.yLabel = bandPlotObject.allData[0].Y_label;
   if (bandPlotObject.yLabel === undefined) {
-    bandPlotObject.yLabel = "E - Ef (eV)";
+    bandPlotObject.yLabel =
+      this.formatSettings["bands_ylabel"] || "E - Ef (eV)";
   }
 
   if (bandPlotObject.myChart === undefined) {

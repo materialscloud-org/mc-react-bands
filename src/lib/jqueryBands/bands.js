@@ -79,12 +79,13 @@ function bandPlot(
   showLegend,
   yLimit,
   dosRange,
-  colorInfo
+  colorInfo,
+  formatSettings
 ) {
   plots[bandDivId] = {};
 
   var b = window.performance.now();
-  console.log("start time: plotting band plot: current time => ", bandDivId, b);
+  //console.log("start time: plotting band plot: current time => ", bandDivId, b);
 
   // create band plot object
   var theBandPlot = new BandPlot(
@@ -92,7 +93,8 @@ function bandPlot(
     showFermi,
     showLegend,
     yLimit,
-    dosRange
+    dosRange,
+    formatSettings
   );
   var colorDict;
 
@@ -314,12 +316,12 @@ function bandPlot(
   // $(theTextBox).data('bs.tooltip', false).tooltip({title: helperString, html: true})
   //                        .tooltip('show'); // Open the tooltip
 
-  console.log(
-    "end time: plotting band plot: current time, total time => ",
-    bandDivId,
-    window.performance.now(),
-    window.performance.now() - b
-  );
+  // console.log(
+  //   "end time: plotting band plot: current time, total time => ",
+  //   bandDivId,
+  //   window.performance.now(),
+  //   window.performance.now() - b
+  // );
 
   return theBandPlot;
 }
