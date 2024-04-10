@@ -129,14 +129,7 @@ function getValidPointNames(allData) {
 }
 
 /////////////// MAIN CLASS DEFINITION /////////////////
-var BandPlot = function (
-  divID,
-  showFermi,
-  showLegend,
-  yLimit,
-  dosRange,
-  formatSettings
-) {
+var BandPlot = function (divID, energyRange, dosRange, formatSettings) {
   this.divID = divID;
   this.allData = [];
   this.dosData = {};
@@ -149,12 +142,12 @@ var BandPlot = function (
   this.currentPath = [];
   this.bandFermiEnergy = null;
   this.dosFermiEnergy = null;
-  this.showFermi = showFermi;
-  this.showLegend = showLegend;
-  this.yLimit = yLimit;
-  this.dosRange = dosRange;
+  this.energyRange = energyRange ?? [null, null];
+  this.dosRange = dosRange ?? [null, null];
   this.yLabel = "";
-  this.formatSettings = formatSettings || {};
+  this.formatSettings = formatSettings ?? {};
+  this.showFermi = this.formatSettings["showFermi"] ?? true;
+  this.showLegend = this.formatSettings["showLegend"] ?? true;
 
   if (typeof this.myChart != "undefined") {
     this.myChart.destroy();
@@ -366,9 +359,9 @@ BandPlot.prototype.initChart = function (ticksData) {
     },
   };
 
-  if (bandPlotObject.yLimit) {
-    chartOptions.options.scales.y.min = bandPlotObject.yLimit.ymin;
-    chartOptions.options.scales.y.max = bandPlotObject.yLimit.ymax;
+  if (bandPlotObject.energyRange) {
+    chartOptions.options.scales.y.min = bandPlotObject.energyRange[0];
+    chartOptions.options.scales.y.max = bandPlotObject.energyRange[1];
   }
   if (bandPlotObject.xLimit) {
     chartOptions.options.scales.x.min = bandPlotObject.xLimit.xmin;
@@ -496,8 +489,8 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
             border: {
               display: true,
             },
-            min: bandPlotObject.yLimit.ymin,
-            max: bandPlotObject.yLimit.ymax,
+            min: bandPlotObject.energyRange[0],
+            max: bandPlotObject.energyRange[1],
             ticks: {
               // padding: 10,
               // change the label of the ticks
@@ -633,8 +626,8 @@ BandPlot.prototype.initDosChart = function (orientation = "vertical") {
               display: true,
               text: "E - Ef (eV)",
             },
-            min: bandPlotObject.yLimit.ymin,
-            max: bandPlotObject.yLimit.ymax,
+            min: bandPlotObject.energyRange[0],
+            max: bandPlotObject.energyRange[1],
             ticks: {
               // change the label of the ticks
               callback: function (value, index, values) {
@@ -902,8 +895,7 @@ BandPlot.prototype.updateBandPlot = function (bandPath, forceRedraw) {
 
   bandPlotObject.yLabel = bandPlotObject.allData[0].Y_label;
   if (bandPlotObject.yLabel === undefined) {
-    bandPlotObject.yLabel =
-      this.formatSettings["bands_ylabel"] || "E - Ef (eV)";
+    bandPlotObject.yLabel = this.formatSettings["bandsYlabel"] || "E - Ef (eV)";
   }
 
   if (bandPlotObject.myChart === undefined) {
@@ -1016,8 +1008,10 @@ BandPlot.prototype.resBandZoom = function () {
   // So, we reset them according to the current path
   bandPlotObject.myChart.options.scales.x.min = bandPlotObject.xLimit.xmin;
   bandPlotObject.myChart.options.scales.x.max = bandPlotObject.xLimit.xmax;
-  bandPlotObject.myChart.options.scales.y.min = bandPlotObject.yLimit.ymin;
-  bandPlotObject.myChart.options.scales.y.max = bandPlotObject.yLimit.ymax;
+  if (bandPlotObject.energyRange) {
+    bandPlotObject.myChart.options.scales.y.min = bandPlotObject.energyRange[0];
+    bandPlotObject.myChart.options.scales.y.max = bandPlotObject.energyRange[1];
+  }
   bandPlotObject.myChart.update();
 };
 
@@ -1025,11 +1019,11 @@ BandPlot.prototype.resDosZoom = function (orientation = "vertical") {
   var bandPlotObject = this;
   bandPlotObject.myDos.resetZoom();
   if (orientation === "vertical") {
-    bandPlotObject.myDos.options.scales.y.min = bandPlotObject.yLimit.ymin;
-    bandPlotObject.myDos.options.scales.y.max = bandPlotObject.yLimit.ymax;
+    bandPlotObject.myDos.options.scales.y.min = bandPlotObject.energyRange[0];
+    bandPlotObject.myDos.options.scales.y.max = bandPlotObject.energyRange[1];
   } else {
-    bandPlotObject.myDos.options.scales.x.min = bandPlotObject.yLimit.ymin;
-    bandPlotObject.myDos.options.scales.x.max = bandPlotObject.yLimit.ymax;
+    bandPlotObject.myDos.options.scales.x.min = bandPlotObject.energyRange[0];
+    bandPlotObject.myDos.options.scales.x.max = bandPlotObject.energyRange[1];
   }
   bandPlotObject.myDos.update();
 };

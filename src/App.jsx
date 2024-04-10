@@ -5,6 +5,7 @@ import "./App.css";
 import co_bands_fast from "./exampleData/co_bands_fast.json";
 import si_bands from "./exampleData/si_bands.json";
 import si_dos from "./exampleData/si_dos.json";
+import si_bands_shifted from "./exampleData/si_bands_shifted.json";
 import fe_spin_bands_fast from "./exampleData/fe_spin_bands_fast.json";
 import fe_spin_dos_fast from "./exampleData/fe_spin_dos_fast.json";
 
@@ -18,31 +19,34 @@ Chart.register(zoomPlugin);
 Chart.register(annotationPlugin);
 
 function App() {
-  const [yLimit, setYLimit] = useState({ ymin: -10.0, ymax: 10.0 });
-  const [bandsData, setBandsData] = useState([si_bands]);
+  const [bandsDataList, setBandsDataList] = useState([
+    si_bands,
+    si_bands_shifted,
+  ]);
 
   const updateWidget = () => {
-    //setYLimit({ ymin: 0.0, ymax: 10.0 });
-    setBandsData([co_bands_fast]);
+    setBandsDataList([co_bands_fast]);
   };
 
   var jsx1 = (
     <div className="center-div">
-      <h3>Bands and DOS</h3>
+      <h3>Bands (x2) and DOS</h3>
       <div
         style={{
           width: "800px",
         }}
       >
         <BandsVisualizer
-          bandsDataList={bandsData}
+          bandsDataList={bandsDataList}
           dosData={si_dos}
-          showFermi={true}
-          showLegend={undefined}
-          yLimit={yLimit}
-          dosRange={[]}
-          colorInfo={undefined}
-          formatSettings={{ bands_ylabel: "Electronic bands (eV)" }}
+          energyRange={[-5.0, 5.0]}
+          dosRange={[0.0, 2.0]}
+          bandsColorInfo={["green", "red"]}
+          formatSettings={{
+            bandsYlabel: "Electronic bands (eV)",
+            showFermi: true,
+            showLegend: true,
+          }}
         />
       </div>
     </div>
@@ -60,11 +64,7 @@ function App() {
         <BandsVisualizer
           bandsDataList={[fe_spin_bands_fast]}
           dosData={fe_spin_dos_fast}
-          showFermi={true}
-          showLegend={undefined}
-          yLimit={{ ymin: -10.0, ymax: 10.0 }}
-          dosRange={[]}
-          colorInfo={undefined}
+          energyRange={[-10.0, 10.0]}
         />
       </div>
     </div>
@@ -80,12 +80,7 @@ function App() {
       >
         <BandsVisualizer
           bandsDataList={[si_bands]}
-          dosData={null}
-          showFermi={true}
-          showLegend={undefined}
-          yLimit={{ ymin: -10.0, ymax: 10.0 }}
-          dosRange={[]}
-          colorInfo={undefined}
+          energyRange={[-10.0, 10.0]}
         />
       </div>
     </div>
@@ -100,13 +95,9 @@ function App() {
         }}
       >
         <BandsVisualizer
-          bandsDataList={[]}
           dosData={si_dos}
-          showFermi={true}
-          showLegend={undefined}
-          yLimit={{ ymin: -10.0, ymax: 10.0 }}
-          dosRange={[]}
-          colorInfo={undefined}
+          energyRange={[-7.0, 7.0]}
+          dosRange={[0.0, 2.0]}
         />
       </div>
     </div>

@@ -75,9 +75,7 @@ function bandPlot(
   bandPathTextBoxId,
   dataFilePaths,
   dosFile,
-  showFermi,
-  showLegend,
-  yLimit,
+  energyRange,
   dosRange,
   colorInfo,
   formatSettings
@@ -90,13 +88,10 @@ function bandPlot(
   // create band plot object
   var theBandPlot = new BandPlot(
     bandDivId,
-    showFermi,
-    showLegend,
-    yLimit,
+    energyRange,
     dosRange,
     formatSettings
   );
-  var colorDict;
 
   // add data for every band structure
   if (dataFilePaths.length) {

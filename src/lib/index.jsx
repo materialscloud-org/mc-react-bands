@@ -10,7 +10,7 @@ function BandsVisualizer(props) {
   var theBandPlot = useRef(null);
 
   // basic checks
-  var isBands = props.bandsDataList.length > 0;
+  var isBands = !(!props.bandsDataList || props.bandsDataList.length == 0);
   var isDos = props.dosData != undefined || props.dosData != null;
   var areBoth = isBands && isDos;
 
@@ -18,13 +18,11 @@ function BandsVisualizer(props) {
     theBandPlot = bandPlot(
       uuidCanvas,
       uuidTextbox,
-      props.bandsDataList,
+      isBands ? props.bandsDataList : [],
       props.dosData,
-      props.showFermi,
-      props.showLegend,
-      props.yLimit,
+      props.energyRange,
       props.dosRange,
-      props.colorInfo,
+      props.bandsColorInfo,
       props.formatSettings
     );
     return () => {

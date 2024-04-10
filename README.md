@@ -13,8 +13,8 @@ Basic usage is the following:
 ```JSX
 import BandsVisualizer from "mc-react-bands";
 
-import Si_bands from "./data/Si_bands.json";
-import Si_dos from "./data/Si_dos.json";
+import si_bands from "./exampleData/si_bands.json";
+import si_dos from "./exampleData/si_dos.json";
 
 // Chart.js plugins need to be registered outside the library
 import Chart from "chart.js/auto";
@@ -26,13 +26,8 @@ Chart.register(annotationPlugin);
 function App() {
   return (
     <BandsVisualizer
-      bandsDataList={[Si_bands]}
-      dosData={Si_dos}
-      showFermi={true}
-      showLegend={undefined}
-      yLimit={{ ymin: -10.0, ymax: 10.0 }}
-      dosRange={[]}
-      colorInfo={undefined}
+      bandsDataList={[si_bands]}
+      dosData={si_dos}
     />
   );
 }
