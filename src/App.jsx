@@ -2,12 +2,11 @@ import React, { useState } from "react";
 
 import "./App.css";
 
-import Co_bands from "./data/Co_bands.json";
-import Co_bands_fast from "./data/Co_bands_fast.json";
-import Si_bands from "./data/Si_bands.json";
-import Si_dos from "./data/Si_dos.json";
-import Fe_spin_bands_fast from "./data/Fe_spin_bands_fast.json";
-import Fe_spin_dos_fast from "./data/Fe_spin_dos_fast.json";
+import co_bands_fast from "./exampleData/co_bands_fast.json";
+import si_bands from "./exampleData/si_bands.json";
+import si_dos from "./exampleData/si_dos.json";
+import fe_spin_bands_fast from "./exampleData/fe_spin_bands_fast.json";
+import fe_spin_dos_fast from "./exampleData/fe_spin_dos_fast.json";
 
 import BandsVisualizer from "./lib";
 
@@ -20,11 +19,11 @@ Chart.register(annotationPlugin);
 
 function App() {
   const [yLimit, setYLimit] = useState({ ymin: -10.0, ymax: 10.0 });
-  const [bandsData, setBandsData] = useState([Si_bands]);
+  const [bandsData, setBandsData] = useState([si_bands]);
 
   const updateWidget = () => {
     //setYLimit({ ymin: 0.0, ymax: 10.0 });
-    setBandsData([Co_bands]);
+    setBandsData([co_bands_fast]);
   };
 
   var jsx1 = (
@@ -37,7 +36,7 @@ function App() {
       >
         <BandsVisualizer
           bandsDataList={bandsData}
-          dosData={Si_dos}
+          dosData={si_dos}
           showFermi={true}
           showLegend={undefined}
           yLimit={yLimit}
@@ -58,8 +57,8 @@ function App() {
       >
         <span>test</span>
         <BandsVisualizer
-          bandsDataList={[Fe_spin_bands_fast]}
-          dosData={Fe_spin_dos_fast}
+          bandsDataList={[fe_spin_bands_fast]}
+          dosData={fe_spin_dos_fast}
           showFermi={true}
           showLegend={undefined}
           yLimit={{ ymin: -10.0, ymax: 10.0 }}
@@ -79,7 +78,7 @@ function App() {
         }}
       >
         <BandsVisualizer
-          bandsDataList={[Si_bands]}
+          bandsDataList={[si_bands]}
           dosData={null}
           showFermi={true}
           showLegend={undefined}
@@ -101,7 +100,7 @@ function App() {
       >
         <BandsVisualizer
           bandsDataList={[]}
-          dosData={Si_dos}
+          dosData={si_dos}
           showFermi={true}
           showLegend={undefined}
           yLimit={{ ymin: -10.0, ymax: 10.0 }}
