@@ -81,6 +81,7 @@ function App() {
         <BandsVisualizer
           bandsDataList={[si_bands]}
           energyRange={[-10.0, 10.0]}
+          bandsColorInfo={["red"]}
         />
       </div>
     </div>

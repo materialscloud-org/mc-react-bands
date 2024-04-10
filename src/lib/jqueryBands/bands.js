@@ -100,7 +100,7 @@ function bandPlot(
 
       if (colorInfo !== undefined) {
         if (typeof colorInfo[dataIdx] === "object") {
-          var newColor = tinycolor("red");
+          var newColor = tinycolor("black");
           colorDict = [newColor, colorInfo[dataIdx][0], colorInfo[dataIdx][1]];
         } else if (typeof colorInfo[dataIdx] === "string") {
           var newColor = tinycolor(colorInfo[dataIdx]);
@@ -110,8 +110,8 @@ function bandPlot(
             newColor.brighten(20).toHexString(),
           ];
         } else {
-          // default bandstructure color is red
-          var newColor = tinycolor("red");
+          // default bandstructure color is black
+          var newColor = tinycolor("black");
           colorDict = [
             newColor.toHexString(),
             newColor.darken(20).toHexString(),
