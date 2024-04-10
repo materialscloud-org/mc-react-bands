@@ -181,7 +181,7 @@ BandPlot.prototype.addBandStructure = function (bandsData, colorInfo) {
     "#ff7f00",
   ];
 
-  if (typeof colorInfo === "undefined") {
+  if (!colorInfo || colorInfo.length) {
     var nextIndex = this.allColorInfo.length;
     var newColor = tinycolor(defaultColors[nextIndex % defaultColors.length]);
     colorInfo = [
