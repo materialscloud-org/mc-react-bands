@@ -7,6 +7,7 @@ import si_bands from "./exampleData/si_bands.json";
 import si_dos from "./exampleData/si_dos.json";
 import si_bands_shifted from "./exampleData/si_bands_shifted.json";
 import fe_spin_bands_fast from "./exampleData/fe_spin_bands_fast.json";
+import co_bands from "./exampleData/co_bands.json";
 import fe_spin_dos_fast from "./exampleData/fe_spin_dos_fast.json";
 
 import BandsVisualizer from "./lib";
@@ -14,6 +15,8 @@ import BandsVisualizer from "./lib";
 import Chart from "chart.js/auto";
 import zoomPlugin from "chartjs-plugin-zoom";
 import annotationPlugin from "chartjs-plugin-annotation";
+import CombinedBandDosPlot from "./lib/reactBandsDos/bandsDosReact";
+import BandstructureReact from "./lib/reactBands/bandstructureReact";
 
 Chart.register(zoomPlugin);
 Chart.register(annotationPlugin);
@@ -111,6 +114,15 @@ function App() {
       {jsx2}
       {jsx3}
       {jsx4}
+      <div style={{ width: "900px", height: "600px" }}>
+        <BandstructureReact bandsDataArray={[fe_spin_bands_fast]} />
+      </div>
+      <div style={{ width: "900px", height: "600px" }}>
+        <CombinedBandDosPlot
+          bandsData={fe_spin_bands_fast}
+          dosData={fe_spin_dos_fast}
+        />
+      </div>
     </div>
   );
 }

@@ -90,7 +90,7 @@ export function CombinedBandDosPlot({ bandsData, dosData }) {
           x1: 0.65,
           y1: 1.0,
           line: {
-            color: "green",
+            color: "#111111",
             width: 2,
           },
           layer: "above",
@@ -104,7 +104,7 @@ export function CombinedBandDosPlot({ bandsData, dosData }) {
           x1: 1.0,
           y1: 1.0,
           line: {
-            color: "green",
+            color: "#111111",
             width: 2,
           },
           layer: "above",
